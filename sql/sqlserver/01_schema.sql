@@ -1,0 +1,92 @@
+-- SQL Server 2022-compatible reimplementation of the documented 13-table schema.
+-- NOT a byte-identical copy of the original 2025/2026 exported DDL.
+-- No original human sample records or host-specific MDF paths are included.
+-- SAFETY: run only on a NEW, isolated VRElmenyparkPortfolio database.
+IF DB_NAME() <> N'VRElmenyparkPortfolio'
+    THROW 51000, 'Wrong database: expected VRElmenyparkPortfolio (isolated demo only)', 1;
+CREATE TABLE dbo.BOOKING_STATUSES (code CHAR(1) PRIMARY KEY, description NVARCHAR(50) NOT NULL);
+CREATE TABLE dbo.DIFFICULTY_LEVELS (code CHAR(1) PRIMARY KEY, description NVARCHAR(50) NOT NULL);
+CREATE TABLE dbo.EXPERIENCE_CATEGORIES (code CHAR(1) PRIMARY KEY, description NVARCHAR(50) NOT NULL);
+CREATE TABLE dbo.GENDERS (code CHAR(1) PRIMARY KEY, description NVARCHAR(50) NOT NULL);
+CREATE TABLE dbo.PAYMENT_METHODS (code CHAR(1) PRIMARY KEY, description NVARCHAR(50) NOT NULL);
+CREATE TABLE dbo.PAYMENT_STATUSES (code CHAR(1) PRIMARY KEY, description NVARCHAR(50) NOT NULL);
+CREATE TABLE dbo.GUESTS (
+ guest_id INT IDENTITY(1,1) NOT NULL CONSTRAINT PK_GUESTS PRIMARY KEY,
+ first_name NVARCHAR(20) NOT NULL, last_name NVARCHAR(30) NOT NULL,
+ birth_date DATE NOT NULL,
+ email NVARCHAR(100) NOT NULL CONSTRAINT UQ_GUESTS_email UNIQUE,
+ phone_number NVARCHAR(20) NOT NULL,
+ registration_date DATETIME2 NOT NULL CONSTRAINT DF_GUESTS_registration DEFAULT SYSUTCDATETIME(),
+ address NVARCHAR(200) NULL,
+ gender CHAR(1) NULL CONSTRAINT FK_GUESTS_gender REFERENCES dbo.GENDERS(code),
+ CONSTRAINT CK_GUESTS_birth CHECK (birth_date <= DATEADD(year,-3,GETDATE())),
+ CONSTRAINT CK_GUESTS_email CHECK (email LIKE '%_@__%.__%'),
+ CONSTRAINT CK_GUESTS_phone CHECK (phone_number NOT LIKE '%[^0-9+ ]%' AND LEN(phone_number) BETWEEN 8 AND 20)
+);
+CREATE TABLE dbo.ROOMS (
+ room_id SMALLINT IDENTITY(1,1) NOT NULL CONSTRAINT PK_ROOMS PRIMARY KEY,
+ room_name NVARCHAR(50) NOT NULL CONSTRAINT UQ_ROOMS_name UNIQUE,
+ location NVARCHAR(100) NOT NULL,
+ availability_status NVARCHAR(20) NOT NULL CONSTRAINT DF_ROOMS_availability DEFAULT N'available',
+ capacity TINYINT NOT NULL,
+ CONSTRAINT CK_ROOMS_capacity CHECK(capacity BETWEEN 1 AND 20),
+ CONSTRAINT CK_ROOMS_status CHECK(availability_status IN(N'available',N'occupied',N'maintenance',N'out of order'))
+);
+CREATE TABLE dbo.EXPERIENCES (
+ experience_id SMALLINT IDENTITY(1,1) NOT NULL CONSTRAINT PK_EXPERIENCES PRIMARY KEY,
+ room_id SMALLINT NOT NULL CONSTRAINT FK_EXPERIENCES_room REFERENCES dbo.ROOMS(room_id),
+ price DECIMAL(10,2) NOT NULL,
+ experience_name NVARCHAR(50) NOT NULL CONSTRAINT UQ_EXPERIENCES_name UNIQUE,
+ category CHAR(1) NOT NULL CONSTRAINT FK_EXPERIENCES_category REFERENCES dbo.EXPERIENCE_CATEGORIES(code),
+ difficulty_level CHAR(1) NOT NULL CONSTRAINT FK_EXPERIENCES_difficulty REFERENCES dbo.DIFFICULTY_LEVELS(code),
+ duration_minutes TINYINT NOT NULL,
+ age_limit TINYINT NOT NULL,
+ CONSTRAINT CK_EXPERIENCES_price CHECK(price >= 0),
+ CONSTRAINT CK_EXPERIENCES_duration CHECK(duration_minutes IN(15,30,45,60,90,120)),
+ CONSTRAINT CK_EXPERIENCES_age_limit CHECK(age_limit IN(3,6,12,14,16,18)),
+ CONSTRAINT CK_EXPERIENCES_family_difficulty CHECK(NOT(category='F' AND difficulty_level='H'))
+);
+CREATE TABLE dbo.BOOKINGS (
+ booking_id INT IDENTITY(1,1) NOT NULL CONSTRAINT PK_BOOKINGS PRIMARY KEY,
+ guest_id INT NOT NULL CONSTRAINT FK_BOOKINGS_guest REFERENCES dbo.GUESTS(guest_id),
+ experience_id SMALLINT NOT NULL CONSTRAINT FK_BOOKINGS_experience REFERENCES dbo.EXPERIENCES(experience_id),
+ room_id SMALLINT NOT NULL CONSTRAINT FK_BOOKINGS_room REFERENCES dbo.ROOMS(room_id),
+ booking_date DATETIME2 NOT NULL CONSTRAINT DF_BOOKINGS_date DEFAULT SYSUTCDATETIME(),
+ start_time DATETIME2 NOT NULL,
+ end_time DATETIME2 NOT NULL,
+ -- The original export defaulted to 'C', although its sample status lookup labels C as Cancelled.
+ -- This portfolio adaptation uses 'A' (Active), and records the deviation explicitly.
+ status CHAR(1) NOT NULL CONSTRAINT DF_BOOKINGS_status DEFAULT 'A'
+   CONSTRAINT FK_BOOKINGS_status REFERENCES dbo.BOOKING_STATUSES(code),
+ CONSTRAINT CK_BOOKINGS_start CHECK(start_time > booking_date),
+ CONSTRAINT CK_BOOKINGS_end CHECK(end_time > start_time)
+);
+CREATE TABLE dbo.BOOKING_PARTICIPANTS (
+ participant_id INT IDENTITY(1,1) NOT NULL CONSTRAINT PK_BOOKING_PARTICIPANTS PRIMARY KEY,
+ booking_id INT NOT NULL CONSTRAINT FK_PARTICIPANTS_booking REFERENCES dbo.BOOKINGS(booking_id),
+ guest_id INT NULL CONSTRAINT FK_PARTICIPANTS_guest REFERENCES dbo.GUESTS(guest_id),
+ first_name NVARCHAR(50) NULL, last_name NVARCHAR(50) NULL,
+ birth_date DATE NOT NULL,
+ CONSTRAINT CK_PARTICIPANTS_identity CHECK(guest_id IS NOT NULL OR (first_name IS NOT NULL AND last_name IS NOT NULL)),
+ CONSTRAINT CK_PARTICIPANTS_birth CHECK(birth_date BETWEEN '19000101' AND CONVERT(date,GETDATE()))
+);
+CREATE TABLE dbo.PAYMENTS (
+ payment_id INT IDENTITY(1,1) NOT NULL CONSTRAINT PK_PAYMENTS PRIMARY KEY,
+ booking_id INT NOT NULL CONSTRAINT FK_PAYMENTS_booking REFERENCES dbo.BOOKINGS(booking_id),
+ payment_method CHAR(1) NOT NULL CONSTRAINT FK_PAYMENTS_method REFERENCES dbo.PAYMENT_METHODS(code),
+ amount_paid DECIMAL(10,2) NOT NULL CONSTRAINT CK_PAYMENTS_amount CHECK(amount_paid >= 0),
+ payment_date DATETIME2 NOT NULL CONSTRAINT DF_PAYMENTS_date DEFAULT SYSUTCDATETIME(),
+ payment_status CHAR(1) NOT NULL CONSTRAINT FK_PAYMENTS_status REFERENCES dbo.PAYMENT_STATUSES(code)
+);
+CREATE TABLE dbo.REVIEWS (
+ review_id INT IDENTITY(1,1) NOT NULL CONSTRAINT PK_REVIEWS PRIMARY KEY,
+ guest_id INT NOT NULL CONSTRAINT FK_REVIEWS_guest REFERENCES dbo.GUESTS(guest_id),
+ experience_id SMALLINT NOT NULL CONSTRAINT FK_REVIEWS_experience REFERENCES dbo.EXPERIENCES(experience_id),
+ rating TINYINT NOT NULL CONSTRAINT CK_REVIEWS_rating CHECK(rating BETWEEN 1 AND 5),
+ text_review NVARCHAR(MAX) NULL,
+ review_date DATETIME2 NOT NULL CONSTRAINT DF_REVIEWS_date DEFAULT SYSUTCDATETIME()
+);
+CREATE INDEX IX_BOOKINGS_guest ON dbo.BOOKINGS(guest_id);
+CREATE INDEX IX_BOOKINGS_experience ON dbo.BOOKINGS(experience_id);
+CREATE INDEX IX_PAYMENTS_booking ON dbo.PAYMENTS(booking_id);
+CREATE INDEX IX_REVIEWS_experience ON dbo.REVIEWS(experience_id);

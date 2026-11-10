@@ -1,0 +1,10 @@
+booking_id,vendeg_neve,booking_date,amount_paid,fizetes_statusza
+1,Anna Minta,2025-10-01 10:00,7000,Completed
+1,Anna Minta,2025-10-01 10:00,2000,Completed
+2,Béla Teszt,2025-10-02 10:00,9000,Pending
+3,Csilla Példa,2025-10-02 10:00,8000,Completed
+4,Anna Minta,2025-10-03 10:00,6000,Failed
+5,Dani Próba,2025-10-03 10:00,8500,Completed
+6,Emese Demó,2025-10-05 10:00,3500,Pending
+7,Béla Teszt,2025-10-25 10:00,7000,Completed
+8,Csilla Példa,2025-10-25 10:00,3500,Completed

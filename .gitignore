@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.db
+*.sqlite
+*.sqlite3
+*.mdf
+*.ldf
+*.bak
+*.env
+.env*
+*.log
+.DS_Store
+.vscode/
+.idea/
+# Original university submissions are private source evidence, not publishable material:
+Adatbázis-kezelés*.pdf

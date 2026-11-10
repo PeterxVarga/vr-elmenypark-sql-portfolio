@@ -1,0 +1,441 @@
+{
+  "q01": [
+    {
+      "atlagos_ar": 6714.29
+    }
+  ],
+  "q02": [
+    {
+      "osszes_jatekido_percben": 390
+    }
+  ],
+  "q03": [
+    {
+      "experience_name": "Dínóösvény",
+      "kategoria": "Adventure"
+    },
+    {
+      "experience_name": "Óceán mélyén",
+      "kategoria": "Adventure"
+    },
+    {
+      "experience_name": "Lovagi küldetés",
+      "kategoria": "Family"
+    },
+    {
+      "experience_name": "Mini labirintus",
+      "kategoria": "Family"
+    },
+    {
+      "experience_name": "Kísértetkastély",
+      "kategoria": "Horror"
+    },
+    {
+      "experience_name": "Orion expedíció",
+      "kategoria": "Sci-fi"
+    },
+    {
+      "experience_name": "Orion tréning",
+      "kategoria": "Sci-fi"
+    }
+  ],
+  "q04": [
+    {
+      "atlagos_ar": 9000.0,
+      "kategoria": "Horror"
+    },
+    {
+      "atlagos_ar": 8250.0,
+      "kategoria": "Adventure"
+    },
+    {
+      "atlagos_ar": 6000.0,
+      "kategoria": "Sci-fi"
+    },
+    {
+      "atlagos_ar": 4750.0,
+      "kategoria": "Family"
+    }
+  ],
+  "q05": [
+    {
+      "foglalas_datuma": "2025-10-01 10:00",
+      "vendeg_neve": "Anna Minta"
+    },
+    {
+      "foglalas_datuma": "2025-10-02 10:00",
+      "vendeg_neve": "Béla Teszt"
+    },
+    {
+      "foglalas_datuma": "2025-10-02 10:00",
+      "vendeg_neve": "Csilla Példa"
+    },
+    {
+      "foglalas_datuma": "2025-10-03 10:00",
+      "vendeg_neve": "Anna Minta"
+    },
+    {
+      "foglalas_datuma": "2025-10-03 10:00",
+      "vendeg_neve": "Dani Próba"
+    },
+    {
+      "foglalas_datuma": "2025-10-05 10:00",
+      "vendeg_neve": "Emese Demó"
+    },
+    {
+      "foglalas_datuma": "2025-10-25 10:00",
+      "vendeg_neve": "Béla Teszt"
+    },
+    {
+      "foglalas_datuma": "2025-10-25 10:00",
+      "vendeg_neve": "Csilla Példa"
+    }
+  ],
+  "q06": [
+    {
+      "foglalasok_szama": 2,
+      "vendeg_neve": "Anna Minta"
+    },
+    {
+      "foglalasok_szama": 2,
+      "vendeg_neve": "Béla Teszt"
+    },
+    {
+      "foglalasok_szama": 2,
+      "vendeg_neve": "Csilla Példa"
+    },
+    {
+      "foglalasok_szama": 1,
+      "vendeg_neve": "Dani Próba"
+    },
+    {
+      "foglalasok_szama": 1,
+      "vendeg_neve": "Emese Demó"
+    },
+    {
+      "foglalasok_szama": 0,
+      "vendeg_neve": "Fanni NincsFoglalás"
+    }
+  ],
+  "q07": [
+    {
+      "experience_name": "Mini labirintus",
+      "nehezsegi_szint": "Easy"
+    },
+    {
+      "experience_name": "Orion tréning",
+      "nehezsegi_szint": "Easy"
+    },
+    {
+      "experience_name": "Óceán mélyén",
+      "nehezsegi_szint": "Easy"
+    },
+    {
+      "experience_name": "Lovagi küldetés",
+      "nehezsegi_szint": "Medium"
+    },
+    {
+      "experience_name": "Orion expedíció",
+      "nehezsegi_szint": "Medium"
+    },
+    {
+      "experience_name": "Dínóösvény",
+      "nehezsegi_szint": "Hard"
+    },
+    {
+      "experience_name": "Kísértetkastély",
+      "nehezsegi_szint": "Hard"
+    }
+  ],
+  "q08": [
+    {
+      "max_befogadokepesseg": 8,
+      "room_name": "Kaland terem"
+    },
+    {
+      "max_befogadokepesseg": 7,
+      "room_name": "Dínó terem"
+    },
+    {
+      "max_befogadokepesseg": 6,
+      "room_name": "Orion terem"
+    },
+    {
+      "max_befogadokepesseg": 5,
+      "room_name": "Óceán terem"
+    },
+    {
+      "max_befogadokepesseg": 4,
+      "room_name": "Kísértet terem"
+    }
+  ],
+  "q09": [
+    {
+      "experience_name": "Mini labirintus",
+      "room_name": "Kaland terem",
+      "start_time": "2025-11-02 14:00",
+      "vendeg_neve": "Csilla Példa"
+    },
+    {
+      "experience_name": "Orion expedíció",
+      "room_name": "Orion terem",
+      "start_time": "2025-11-01 14:00",
+      "vendeg_neve": "Béla Teszt"
+    },
+    {
+      "experience_name": "Mini labirintus",
+      "room_name": "Kaland terem",
+      "start_time": "2025-10-15 16:00",
+      "vendeg_neve": "Emese Demó"
+    },
+    {
+      "experience_name": "Dínóösvény",
+      "room_name": "Dínó terem",
+      "start_time": "2025-10-13 14:00",
+      "vendeg_neve": "Dani Próba"
+    },
+    {
+      "experience_name": "Lovagi küldetés",
+      "room_name": "Kaland terem",
+      "start_time": "2025-10-12 14:00",
+      "vendeg_neve": "Anna Minta"
+    },
+    {
+      "experience_name": "Óceán mélyén",
+      "room_name": "Óceán terem",
+      "start_time": "2025-10-11 12:00",
+      "vendeg_neve": "Csilla Példa"
+    },
+    {
+      "experience_name": "Kísértetkastély",
+      "room_name": "Kísértet terem",
+      "start_time": "2025-10-10 12:00",
+      "vendeg_neve": "Béla Teszt"
+    },
+    {
+      "experience_name": "Orion expedíció",
+      "room_name": "Orion terem",
+      "start_time": "2025-10-03 15:00",
+      "vendeg_neve": "Anna Minta"
+    }
+  ],
+  "q10": [
+    {
+      "osszes_sikeres_befizetes": 11500,
+      "vendeg_neve": "Csilla Példa"
+    }
+  ],
+  "q11": [
+    {
+      "amount_paid": 7000,
+      "booking_date": "2025-10-01 10:00",
+      "booking_id": 1,
+      "fizetes_statusza": "Completed",
+      "vendeg_neve": "Anna Minta"
+    },
+    {
+      "amount_paid": 2000,
+      "booking_date": "2025-10-01 10:00",
+      "booking_id": 1,
+      "fizetes_statusza": "Completed",
+      "vendeg_neve": "Anna Minta"
+    },
+    {
+      "amount_paid": 9000,
+      "booking_date": "2025-10-02 10:00",
+      "booking_id": 2,
+      "fizetes_statusza": "Pending",
+      "vendeg_neve": "Béla Teszt"
+    },
+    {
+      "amount_paid": 8000,
+      "booking_date": "2025-10-02 10:00",
+      "booking_id": 3,
+      "fizetes_statusza": "Completed",
+      "vendeg_neve": "Csilla Példa"
+    },
+    {
+      "amount_paid": 6000,
+      "booking_date": "2025-10-03 10:00",
+      "booking_id": 4,
+      "fizetes_statusza": "Failed",
+      "vendeg_neve": "Anna Minta"
+    },
+    {
+      "amount_paid": 8500,
+      "booking_date": "2025-10-03 10:00",
+      "booking_id": 5,
+      "fizetes_statusza": "Completed",
+      "vendeg_neve": "Dani Próba"
+    },
+    {
+      "amount_paid": 3500,
+      "booking_date": "2025-10-05 10:00",
+      "booking_id": 6,
+      "fizetes_statusza": "Pending",
+      "vendeg_neve": "Emese Demó"
+    },
+    {
+      "amount_paid": 7000,
+      "booking_date": "2025-10-25 10:00",
+      "booking_id": 7,
+      "fizetes_statusza": "Completed",
+      "vendeg_neve": "Béla Teszt"
+    },
+    {
+      "amount_paid": 3500,
+      "booking_date": "2025-10-25 10:00",
+      "booking_id": 8,
+      "fizetes_statusza": "Completed",
+      "vendeg_neve": "Csilla Példa"
+    }
+  ],
+  "q12": [
+    {
+      "experience_name": "Mini labirintus",
+      "foglalasok_szama": 2,
+      "kategoria": "Family"
+    },
+    {
+      "experience_name": "Orion expedíció",
+      "foglalasok_szama": 2,
+      "kategoria": "Sci-fi"
+    },
+    {
+      "experience_name": "Dínóösvény",
+      "foglalasok_szama": 1,
+      "kategoria": "Adventure"
+    },
+    {
+      "experience_name": "Kísértetkastély",
+      "foglalasok_szama": 1,
+      "kategoria": "Horror"
+    },
+    {
+      "experience_name": "Lovagi küldetés",
+      "foglalasok_szama": 1,
+      "kategoria": "Family"
+    },
+    {
+      "experience_name": "Óceán mélyén",
+      "foglalasok_szama": 1,
+      "kategoria": "Adventure"
+    },
+    {
+      "experience_name": "Orion tréning",
+      "foglalasok_szama": 0,
+      "kategoria": "Sci-fi"
+    }
+  ],
+  "q13": [
+    {
+      "kategoria": "Adventure",
+      "sikeres_befizetes_osszesen": 16500
+    },
+    {
+      "kategoria": "Sci-fi",
+      "sikeres_befizetes_osszesen": 16000
+    },
+    {
+      "kategoria": "Family",
+      "sikeres_befizetes_osszesen": 3500
+    }
+  ],
+  "q14": [
+    {
+      "experience_name": "Mini labirintus",
+      "nehezsegi_szint": "Easy",
+      "vendeg_neve": "Emese Demó"
+    },
+    {
+      "experience_name": "Orion expedíció",
+      "nehezsegi_szint": "Medium",
+      "vendeg_neve": "Anna Minta"
+    },
+    {
+      "experience_name": "Lovagi küldetés",
+      "nehezsegi_szint": "Medium",
+      "vendeg_neve": "Anna Minta"
+    },
+    {
+      "experience_name": "Dínóösvény",
+      "nehezsegi_szint": "Hard",
+      "vendeg_neve": "Dani Próba"
+    },
+    {
+      "experience_name": "Óceán mélyén",
+      "nehezsegi_szint": "Easy",
+      "vendeg_neve": "Csilla Példa"
+    },
+    {
+      "experience_name": "Mini labirintus",
+      "nehezsegi_szint": "Easy",
+      "vendeg_neve": "Csilla Példa"
+    },
+    {
+      "experience_name": "Kísértetkastély",
+      "nehezsegi_szint": "Hard",
+      "vendeg_neve": "Béla Teszt"
+    },
+    {
+      "experience_name": "Orion expedíció",
+      "nehezsegi_szint": "Medium",
+      "vendeg_neve": "Béla Teszt"
+    }
+  ],
+  "q15": [
+    {
+      "room_name": "Orion terem",
+      "sikeres_befizetes_osszesen": 16000
+    },
+    {
+      "room_name": "Dínó terem",
+      "sikeres_befizetes_osszesen": 8500
+    },
+    {
+      "room_name": "Óceán terem",
+      "sikeres_befizetes_osszesen": 8000
+    },
+    {
+      "room_name": "Kaland terem",
+      "sikeres_befizetes_osszesen": 3500
+    }
+  ],
+  "q16": [
+    {
+      "foglalasok_szama": 3,
+      "nehezsegi_szint": "Easy"
+    },
+    {
+      "foglalasok_szama": 3,
+      "nehezsegi_szint": "Medium"
+    },
+    {
+      "foglalasok_szama": 2,
+      "nehezsegi_szint": "Hard"
+    }
+  ],
+  "q17": [
+    {
+      "room_name": "Dínó terem"
+    },
+    {
+      "room_name": "Kaland terem"
+    },
+    {
+      "room_name": "Kísértet terem"
+    },
+    {
+      "room_name": "Orion terem"
+    },
+    {
+      "room_name": "Óceán terem"
+    }
+  ],
+  "q18": [
+    {
+      "osszes_sikeres_befizetes": 11500,
+      "vendeg_neve": "Csilla Példa"
+    }
+  ]
+}
