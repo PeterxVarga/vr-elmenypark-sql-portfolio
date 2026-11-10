@@ -22,7 +22,7 @@ adatbázist változatlanul futtatja vagy hogy webalkalmazás is elkészült.
 ## Képességek
 - 7 fő entitás: GUESTS, BOOKINGS, BOOKING_PARTICIPANTS, EXPERIENCES,
   ROOMS, PAYMENTS, REVIEWS; 6 segédtábla.
-- JOIN, LEFT JOIN, GROUP BY, SUM/AVG/COUNT, HAVING-jellegű elemzések,
+- JOIN, LEFT JOIN, GROUP BY, SUM/AVG/COUNT, csoportosított elemzések,
   rendezés, CASE, allekérdezés, paraméteres lekérdezés.
 - Idegen és elsődleges kulcsok, egyediség és egyes CHECK-korlátok.
 - Kitalált tesztadatok, amelyekben aktív, lemondott és teljesített foglalások;
